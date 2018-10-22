@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TodoListItem from "./TodoListItem.vue";
+import TodoListItem from './TodoListItem.vue';
 
 let todoUid = 0;
 const Status = {
@@ -21,40 +21,40 @@ const Status = {
 };
 
 export default {
-  name: "TodoList",
+  name: 'TodoList',
   components: {
     TodoListItem
   },
-  data() {
+  data () {
     return {
       todoList: [],
-      newTodo: ""
+      newTodo: ''
     };
   },
   props: {},
   methods: {
-    addTodo() {
+    addTodo () {
       this.todoList.push({
         id: todoUid++,
         todoText: this.newTodo,
         status: Status.active
       });
-      this.newTodo = "";
+      this.newTodo = '';
     },
-    deleteTodo(todoId) {
+    deleteTodo (todoId) {
       let index = this.todoList.findIndex(item => item.id === todoId);
       if (index > -1) {
         this.todoList.splice(index, 1);
       }
     },
-    completeTodo(todoId) {
+    completeTodo (todoId) {
       this.todoList.find(item => item.id === todoId).status = Status.done;
     }
   },
-  computed:{
-      numberOfTodos(){
-          return this.todoList.length;
-      }
+  computed: {
+    numberOfTodos () {
+      return this.todoList.length;
+    }
   }
 };
 </script>

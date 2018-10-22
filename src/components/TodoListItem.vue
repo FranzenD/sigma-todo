@@ -2,7 +2,7 @@
     <div class="todo-item" :class="{'todo-item--done': todoItem.status === status.done}">
         <div class="todo-item__text">{{todoItem.todoText}}</div>
         <div class="todo-item__action">
-            <span v-show="todoItem.status === status.active" 
+            <span v-show="todoItem.status === status.active"
                 @click="completeTodo">Klarmarkera</span>
             <span @click="deleteTodo">Ta bort</span></div>
     </div>
@@ -10,8 +10,8 @@
 
 <script>
 export default {
-  name: "TodoListItem",
-  data() {
+  name: 'TodoListItem',
+  data () {
     return {
       isEditing: false,
       status: {
@@ -24,14 +24,14 @@ export default {
     todoItem: Object
   },
   methods: {
-    deleteTodo() {
-      this.$emit("delete", this.todoItem.id);
+    deleteTodo () {
+      this.$emit('delete', this.todoItem.id);
     },
-    completeTodo() {
-      this.$emit("complete", this.todoItem.id);
+    completeTodo () {
+      this.$emit('complete', this.todoItem.id);
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -44,7 +44,7 @@ export default {
   &--done {
     color: white;
     border-color: green;
-    background: rgb(74, 167, 67)
+    background: rgb(74, 167, 67);
   }
   &__action {
     cursor: pointer;
