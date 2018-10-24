@@ -25,7 +25,7 @@ export default {
   components: {
     TodoListItem
   },
-  data () {
+  data() {
     return {
       todoList: [],
       newTodo: ''
@@ -33,26 +33,28 @@ export default {
   },
   props: {},
   methods: {
-    addTodo () {
-      this.todoList.push({
-        id: todoUid++,
-        todoText: this.newTodo,
-        status: Status.active
-      });
-      this.newTodo = '';
+    addTodo() {
+      if (this.newTodo.length) {
+        this.todoList.push({
+          id: todoUid++,
+          todoText: this.newTodo,
+          status: Status.active
+        });
+        this.newTodo = '';
+      }
     },
-    deleteTodo (todoId) {
+    deleteTodo(todoId) {
       let index = this.todoList.findIndex(item => item.id === todoId);
       if (index > -1) {
         this.todoList.splice(index, 1);
       }
     },
-    completeTodo (todoId) {
+    completeTodo(todoId) {
       this.todoList.find(item => item.id === todoId).status = Status.done;
     }
   },
   computed: {
-    numberOfTodos () {
+    numberOfTodos() {
       return this.todoList.length;
     }
   }
@@ -69,8 +71,9 @@ export default {
   width: 100%;
   padding: 10px;
   font-size: 24px;
-  &:focus{
-      outline: none;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
   }
 }
 </style>

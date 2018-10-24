@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'TodoListItem',
-  data () {
+  data() {
     return {
       isEditing: false,
       status: {
@@ -24,14 +24,14 @@ export default {
     todoItem: Object
   },
   methods: {
-    deleteTodo () {
+    deleteTodo() {
       this.$emit('delete', this.todoItem.id);
     },
-    completeTodo () {
+    completeTodo() {
       this.$emit('complete', this.todoItem.id);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -46,9 +46,14 @@ export default {
     border-color: green;
     background: rgb(74, 167, 67);
   }
+
+  &__text {
+      font-weight: bold;
+  }
+
   &__action {
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     & span:first-child {
       margin-right: 10px;
     }
